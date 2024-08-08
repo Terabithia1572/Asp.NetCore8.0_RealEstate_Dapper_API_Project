@@ -7,4 +7,8 @@
     <RootNamespace>Asp.NetCore8._0_RealEstate_Dapper_UI_Project</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
+  </ItemGroup>
+
 </Project>
