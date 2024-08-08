@@ -1,0 +1,6 @@
+@Asp.NetCore8._0_RealEstate_Dapper_API_Project_HostAddress = http://localhost:5186
+
+GET {{Asp.NetCore8._0_RealEstate_Dapper_API_Project_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
