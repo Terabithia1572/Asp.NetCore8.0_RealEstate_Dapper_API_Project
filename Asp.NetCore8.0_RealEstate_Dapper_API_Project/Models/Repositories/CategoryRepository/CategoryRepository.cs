@@ -13,6 +13,18 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Cate
             _context = context;
         }
 
+        public async void CreateCategory(CreateCategoryDTO createCategoryDTO)
+        {
+            string query = "insert into Category (CategoryName,CategoryStatus) values (@categoryName,@categoryStatus)";
+            var parameters = new DynamicParameters();
+            parameters.Add("categoryName", createCategoryDTO.CategoryName);
+            parameters.Add("categoryStatus", true);
+            using(var connection=_context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query,parameters);
+            }
+        }
+
         public async Task<List<ResultCategoryDTO>> GetAllCategoryAsync()
         {
             string query = "select * from Category";

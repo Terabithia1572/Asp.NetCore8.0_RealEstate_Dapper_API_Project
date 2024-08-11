@@ -1,4 +1,5 @@
-﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.CategoryRepository;
+﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.CategoryDTOs;
+using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.CategoryRepository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,12 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         {
             var values=await _categoryRepository.GetAllCategoryAsync();
             return Ok(values);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateCategoryAsync(CreateCategoryDTO createCategoryDTO)
+        {
+             _categoryRepository.CreateCategory(createCategoryDTO);
+            return Ok("Kategori Başarılı Bir Şekilde Eklendi");
         }
     }
 }
