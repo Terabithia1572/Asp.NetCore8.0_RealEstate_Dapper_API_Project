@@ -20,6 +20,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         {
             var values=await _categoryRepository.GetAllCategoryAsync();
             return Ok(values);
+            //NULL UPDATE
         }
         [HttpPost]
         public async Task<IActionResult> CreateCategoryAsync(CreateCategoryDTO createCategoryDTO)
