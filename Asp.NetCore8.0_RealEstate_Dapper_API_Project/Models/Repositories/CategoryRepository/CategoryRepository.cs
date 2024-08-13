@@ -25,6 +25,19 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Cate
             }
         }
 
+        public async void DeleteCategory(int id)
+        {
+            string query = "delete from Category where CategoryID=@categoryID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@categoryID", id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+            
+        }
+
         public async Task<List<ResultCategoryDTO>> GetAllCategoryAsync()
         {
             string query = "select * from Category";

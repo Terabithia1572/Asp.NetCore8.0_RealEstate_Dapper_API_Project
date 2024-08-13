@@ -28,5 +28,11 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
              _categoryRepository.CreateCategory(createCategoryDTO);
             return Ok("Kategori Başarılı Bir Şekilde Eklendi");
         }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            _categoryRepository.DeleteCategory(id);
+            return Ok("Kategori Başarılı Bir Şekilde Silindi.");
+        }
     }
 }
