@@ -68,7 +68,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Cate
 
         public async Task<GetByIDCategoryDTO> GetCategory(int id)
         {
-            string query = "Select * from Categpry where CategoryID=@categoryID";
+            string query = "Select * from Category where CategoryID=@categoryID";
             var parameters=new DynamicParameters();
             parameters.Add("@categoryID", id);
             using(var connection= _context.CreateConnection())
