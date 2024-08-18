@@ -30,8 +30,8 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Cate
         //query: Bu değişken, kategoriyi veritabanına eklemek için kullanılacak SQL sorgusunu tutar.Sorgu, Category tablosuna bir satır eklemek için yazılmıştır ve CategoryName ve CategoryStatus sütunlarına değerleri yerleştirir.
             var parameters = new DynamicParameters();
         //parameters: DynamicParameters sınıfı, SQL sorgusuna dinamik parametreler eklemek için kullanılır. Bu, SQL enjeksiyon saldırılarına karşı koruma sağlar.
-            parameters.Add("categoryName", createCategoryDTO.CategoryName);
-            parameters.Add("categoryStatus", true);
+            parameters.Add("@categoryName", createCategoryDTO.CategoryName);
+            parameters.Add("@categoryStatus", true);
 //            parameters.Add("categoryName", createCategoryDTO.CategoryName);: Sorgu içinde kullanılacak categoryName parametresine, createCategoryDTO nesnesinden alınan CategoryName değeri atanır.
 //parameters.Add("categoryStatus", true);: categoryStatus parametresine ise true değeri atanır. Bu, kategorinin aktif olduğunu gösterir.
             using (var connection=_context.CreateConnection())
