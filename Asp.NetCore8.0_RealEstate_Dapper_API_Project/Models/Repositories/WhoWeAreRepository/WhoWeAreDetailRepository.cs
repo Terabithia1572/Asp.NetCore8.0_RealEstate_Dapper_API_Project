@@ -55,7 +55,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.WhoW
 
         public async Task<GetByIDWhoWeAreDetail> GetWhoWeAreDetail(int id)
         {
-            string query = "Select * from Category where WhoWeAreDetailID=@whoWeAreDetailID";
+            string query = "Select * from WhoWeAreDetail where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();
             parameters.Add("@whoWeAreDetailID", id);
             using (var connection = _context.CreateConnection())
@@ -67,7 +67,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.WhoW
 
         public async void UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDTO updateWhoWeAreDetailDTO)
         {
-            string query = "Update WhoWeAreDetail Set Title=@title,Subtitle=@subTitle,Description1=@description1,Description2=>description2 where WhoWeAreDetailID=@whoWeAreDetailID";
+            string query = "update WhoWeAreDetail Set Title=@title,Subtitle=@subTitle,Description1=@description1,Description2=@description2 where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();
             parameters.Add("@title", updateWhoWeAreDetailDTO.Title);
             parameters.Add("@subTitle", updateWhoWeAreDetailDTO.Subtitle);            
