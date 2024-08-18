@@ -1,4 +1,5 @@
-﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.CategoryDTOs;
+﻿
+using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.CategoryDTOs;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.WhoWeAreDetailDTOs;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.WhoWeAreDTOs;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.DapperContext;
@@ -41,19 +42,42 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.WhoW
             }
         }
 
-        public Task<List<ResultWhoWeAreDetailDTO>> GetAllWhoWeAreDetailAsync()
+        public async Task<List<ResultWhoWeAreDetailDTO>> GetAllWhoWeAreDetailAsync()
         {
-            throw new NotImplementedException();
+
+            string query = "select * from WhoWeAreDetail";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultWhoWeAreDetailDTO>(query);
+                return values.ToList();
+            }
         }
 
-        public Task<GetByIDWhoWeAreDetail> GetWhoWeAreDetail(int id)
+        public async Task<GetByIDWhoWeAreDetail> GetWhoWeAreDetail(int id)
         {
-            throw new NotImplementedException();
+            string query = "Select * from Category where WhoWeAreDetailID=@whoWeAreDetailID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@whoWeAreDetailID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryFirstOrDefaultAsync<GetByIDWhoWeAreDetail>(query, parameters);
+                return values;
+            }
         }
 
-        public void UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDTO updateWhoWeAreDetailDTO)
+        public async void UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDTO updateWhoWeAreDetailDTO)
         {
-            throw new NotImplementedException();
+            string query = "Update WhoWeAreDetail Set Title=@title,SubTitle=@subTitle,Description1=@description1,Description2=>description2 where WhoWeAreDetailID=@whoWeAreDetailID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@title", updateWhoWeAreDetailDTO.Title);
+            parameters.Add("@subTitle", updateWhoWeAreDetailDTO.SubTitle);            
+            parameters.Add("@description1", updateWhoWeAreDetailDTO.Description1);            
+            parameters.Add("@description2", updateWhoWeAreDetailDTO.Description2);            
+            parameters.Add("@whoWeAreDetailID", updateWhoWeAreDetailDTO.WhoWeAreDetailID);
+            using (var connections = _context.CreateConnection())
+            {
+                await connections.ExecuteAsync(query, parameters);
+            }
         }
     }
 }
