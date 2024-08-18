@@ -1,0 +1,27 @@
+
+.box16 {
+    width: 372px;
+    height: 278px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px; /* Fotoðraflar arasýnda boþluk */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+}
+
+.box16 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resmi çerçeveye sýðdýrýr ve kýrpma yapar */
+}
+
+.box-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Alt bilgi alaný için yarý saydam arka plan */
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
