@@ -1,5 +1,7 @@
-﻿using Asp.NetCore8._0_RealEstate_Dapper_UI_Project.DTOs.ProductDTOs;
+﻿using Asp.NetCore8._0_RealEstate_Dapper_UI_Project.DTOs.CategoryDTOs;
+using Asp.NetCore8._0_RealEstate_Dapper_UI_Project.DTOs.ProductDTOs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 
 namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
@@ -17,10 +19,10 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44309/api/Products/ProductListWithCategory");
-            if(responseMessage.IsSuccessStatusCode)
+            if (responseMessage.IsSuccessStatusCode)
             {
-                var jsonData=await responseMessage.Content.ReadAsStringAsync();
-                var values=JsonConvert.DeserializeObject<List<ResultProductDTO>>(jsonData);
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultProductDTO>>(jsonData);
                 return View(values);
             }
             return View();
@@ -28,6 +30,17 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateProduct()
         {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44309/api/Categories");
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultCategoryDTO>>(jsonData);
+            List<SelectListItem> categoryValues = (from x in values.ToList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text=x.CategoryName,
+                                                       Value=x.CategoryID.ToString()
+                                                   }).ToList();
+            ViewBag.v=categoryValues;
             return View();
         }
     }

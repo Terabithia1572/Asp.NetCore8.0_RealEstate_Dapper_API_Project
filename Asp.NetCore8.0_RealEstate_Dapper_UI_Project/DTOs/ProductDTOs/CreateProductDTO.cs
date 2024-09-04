@@ -11,6 +11,6 @@
         public string ProductAddress { get; set; }
         public string ProductDescription { get; set; }
         public string ProductType { get; set; }
-        public string CategoryName { get; set; }
+        public string CategoryID { get; set; }
     }
 }

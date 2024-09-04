@@ -20,7 +20,7 @@
                     <input type="text" asp-for="ProductDistrict" class="form-control" />
                     <br />
                     <label>Kategori</label>
-                    <input type="text" asp-for="ProductTitle" class="form-control" />
+                    @Html.DropDownListFor(x=>x.CategoryID,(List<SelectListItem>)ViewBag.v,new {@class="form-control"})
                     <br />
                     <label>Fiyat</label>
                     <input type="text" asp-for="ProductPrice" class="form-control" />
@@ -29,7 +29,7 @@
                     <input type="text" asp-for="ProductType" class="form-control" />
                     <br />
                     <label>Kapak Fotoğrafı</label>
-                    <input type="text" asp-for="ProductTitle" class="form-control" />
+                    <input type="text" asp-for="ProductCoverImage" class="form-control" />
                     <br />
                     <label>Adres</label>
                     <textarea asp-for="ProductAddress" rows="5" class="form-control"></textarea>
