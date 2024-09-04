@@ -1,6 +1,6 @@
 ﻿namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.DTOs.ProductDTOs
 {
-    public class ResultProductDTOs
+    public class UpdateProductDTO
     {
         public int ProductID { get; set; }
         public string ProductTitle { get; set; }
