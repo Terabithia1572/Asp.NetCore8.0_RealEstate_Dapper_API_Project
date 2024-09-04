@@ -1,0 +1,53 @@
+﻿@model List<ResultEmployeeDTO>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Responsive Table</h6>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Personel Adı Soyadı</th>
+                                <th scope="col">Personel Başlık</th>
+                                <th scope="col">Personel Mail</th>
+                                <th scope="col">Personel Telefon</th>
+                                <th scope="col">Personel Resmi</th>
+                                <th scope="col">Durum</th>
+                                <th scope="col">Sil</th>
+                                <th scope="col">Güncelle</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@item.EmployeeID</th>
+                                    <th scope="row">@item.EmployeeName</th>
+                                    <td>@item.EmployeeTitle</td>
+                                    <td>@item.EmployeeMail</td>
+                                    <td>@item.EmployeePhoneNumber</td>
+                                    <td>@item.EmployeeImageURL</td>
+                                    <td>@item.EmployeeStatus</td>
+                                    <td><a href="/Employee/DeleteEmployee/@item.EmployeeID" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Employee/UpdateEmployee/@item.EmployeeID" class="btn btn-success">Güncelle</a></td>
+
+
+                                </tr>
+                            }
+                        </tbody>
+                        <td><a href="/Employee/CreateEmployee/" class="btn btn-info">Yeni Personel Girişi</a></td>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
