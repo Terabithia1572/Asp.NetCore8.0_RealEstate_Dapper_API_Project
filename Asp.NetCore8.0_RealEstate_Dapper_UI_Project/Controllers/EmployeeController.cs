@@ -27,7 +27,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult CreateCategory()
+        public IActionResult CreateEmployee()
         {
             return View();
         }
@@ -68,7 +68,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateCategory(UpdateEmployeeDTO updateEmployeeDTO)
+        public async Task<IActionResult> UpdateEmployee(UpdateEmployeeDTO updateEmployeeDTO)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateEmployeeDTO);
