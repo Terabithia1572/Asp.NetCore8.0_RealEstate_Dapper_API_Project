@@ -48,6 +48,11 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         public IActionResult CategoryCount()
         {
             return Ok(_statisticsRepository.CategoryCount());
+        }  
+        [HttpGet("CategoryNameByMaxCount")]
+        public IActionResult CategoryNameByMaxCount()
+        {
+            return Ok(_statisticsRepository.CategoryNameByMaxCount());
         }
     }
 }

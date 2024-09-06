@@ -85,7 +85,12 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Stat
 
         public string CategoryNameByMaxCount()
         {
-            throw new NotImplementedException();
+            string query = "select TOP(1) CategoryName,Count(*) as 'Kategori Sayısı' from Product inner join Category on Product.ProductCategory=Category.CategoryID Group By CategoryName Order by Count(*) desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public string CityNameByMaxProductCount()
