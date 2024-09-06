@@ -48,7 +48,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Stat
             string query = "select Avg(ProductPrice) as 'Ortalama Kiralık Fiyat' from Product where ProductType='Kiralık'";
             using (var connection = _context.CreateConnection())
             {
-                var values = connection.QueryFirstOrDefault<int>(query);
+                var values = connection.QueryFirstOrDefault<decimal>(query);
                 return values;
             }
         }
@@ -58,19 +58,29 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Stat
             string query = "select Avg(ProductPrice) as 'Ortalama Satılık Fiyat' from Product where ProductType='Satılık'";
             using (var connection = _context.CreateConnection())
             {
-                var values = connection.QueryFirstOrDefault<int>(query);
+                var values = connection.QueryFirstOrDefault<decimal>(query);
                 return values;
             }
         }
 
         public int AverageRoomCount()
         {
-            throw new NotImplementedException();
+            string query = "select AVG(ProductRoomCount) as 'Ortalama Oda Sayısı' from ProductDetails";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public int CategoryCount()
         {
-            throw new NotImplementedException();
+            string query = "select Count(*) as 'Kategori Sayısı' from Category";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public string CategoryNameByMaxCount()
