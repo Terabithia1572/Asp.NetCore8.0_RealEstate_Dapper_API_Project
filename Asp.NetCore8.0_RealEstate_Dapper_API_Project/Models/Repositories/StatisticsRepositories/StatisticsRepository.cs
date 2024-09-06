@@ -35,7 +35,12 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Stat
 
         public int ApartmentCount()
         {
-            throw new NotImplementedException();
+            string query = "select Count(*) as 'Daire Sayısı' from Product where ProductTitle like '%daire%'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public decimal AverageProductByRent()

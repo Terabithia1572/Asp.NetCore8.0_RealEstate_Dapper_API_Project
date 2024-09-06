@@ -24,5 +24,10 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         {
             return Ok(_statisticsRepository.ActiveEmployeeCount());
         }
+        [HttpGet("ApartmentCount")]
+        public IActionResult ApartmentCount()
+        {
+            return Ok(_statisticsRepository.ApartmentCount());
+        }
     }
 }
