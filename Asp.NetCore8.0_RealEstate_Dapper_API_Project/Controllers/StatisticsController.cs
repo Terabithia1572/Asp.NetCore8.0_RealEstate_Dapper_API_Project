@@ -29,5 +29,15 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         {
             return Ok(_statisticsRepository.ApartmentCount());
         }
+        [HttpGet("AverageProductPriceByRent")]
+        public IActionResult AverageProductPriceByRent()
+        {
+            return Ok(_statisticsRepository.AverageProductPriceByRent());
+        }
+        [HttpGet("AverageProductPriceBySale")]
+        public IActionResult AverageProductPriceBySale()
+        {
+            return Ok(_statisticsRepository.AverageProductPriceBySale());
+        }
     }
 }

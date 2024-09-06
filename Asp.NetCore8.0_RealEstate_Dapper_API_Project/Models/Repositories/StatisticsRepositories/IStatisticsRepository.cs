@@ -9,8 +9,8 @@
         int ApartmentCount();
         string EmployeeNameByMaxCount();
         string CategoryNameByMaxCount();
-        decimal AverageProductByRent();
-        decimal AverageProductBySale();
+        decimal AverageProductPriceByRent();
+        decimal AverageProductPriceBySale();
         string CityNameByMaxProductCount();
         int DifferentCityCount();
         decimal LastProductPrice();

@@ -43,14 +43,24 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Stat
             }
         }
 
-        public decimal AverageProductByRent()
+        public decimal AverageProductPriceByRent()
         {
-            throw new NotImplementedException();
+            string query = "select Avg(ProductPrice) as 'Ortalama Kiralık Fiyat' from Product where ProductType='Kiralık'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
-        public decimal AverageProductBySale()
+        public decimal AverageProductPriceBySale()
         {
-            throw new NotImplementedException();
+            string query = "select Avg(ProductPrice) as 'Ortalama Satılık Fiyat' from Product where ProductType='Satılık'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public int AverageRoomCount()
