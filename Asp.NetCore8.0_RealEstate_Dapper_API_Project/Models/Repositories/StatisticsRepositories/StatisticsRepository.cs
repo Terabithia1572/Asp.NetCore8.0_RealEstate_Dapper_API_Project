@@ -95,7 +95,12 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Stat
 
         public string CityNameByMaxProductCount()
         {
-            throw new NotImplementedException();
+            string query = "select TOP(1) ProductCity, Count(*) as 'İlan_Sayısı' from Product Group By ProductCity order by İlan_Sayısı desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public int DifferentCityCount()
