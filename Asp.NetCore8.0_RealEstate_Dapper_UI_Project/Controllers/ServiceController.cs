@@ -17,7 +17,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44309/api/Service");
+            var responseMessage = await client.GetAsync("https://localhost:44309/api/Services");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -37,7 +37,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createServiceDTO);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44309/api/Service", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:44309/api/Services", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -47,7 +47,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         public async Task<IActionResult> DeleteService(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:44309/api/Service/{id}");
+            var responseMessage = await client.DeleteAsync($"https://localhost:44309/api/Services/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -58,7 +58,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         public async Task<IActionResult> UpdateService(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:44309/api/Service/{id}");
+            var responseMessage = await client.GetAsync($"https://localhost:44309/api/Services/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -73,7 +73,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateServiceDTO);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:44309/api/Service/", stringContent);
+            var responseMessage = await client.PutAsync("https://localhost:44309/api/Services/", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

@@ -63,11 +63,11 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Serv
 
         public async void UpdateService(UpdateServiceDTO updateServiceDTO)
         {
-            string query = "update Service Set ServiceName=@serviceName,ServiceStatus=@serviceStatus where ServiceID=@ServiceID";
+            string query = "update Service Set ServiceName=@serviceName,ServiceStatus=@serviceStatus where ServiceID=@serviceID";
             var parameters = new DynamicParameters();
-            parameters.Add("@title", updateServiceDTO.ServiceName);
-            parameters.Add("@subTitle", true);
-            parameters.Add("@ServiceID", updateServiceDTO.ServiceID);
+            parameters.Add("@serviceName", updateServiceDTO.ServiceName);
+            parameters.Add("@serviceStatus", true);
+            parameters.Add("@serviceID", updateServiceDTO.ServiceID);
             using (var connections = _context.CreateConnection())
             {
                 await connections.ExecuteAsync(query, parameters);
