@@ -24,7 +24,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.ViewComponents.HomePage
                var jsonData=await responseMessage.Content.ReadAsStringAsync();
                var jsonData2=await responseMessage2.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultWhoWeAreDetailDTO>>(jsonData);
-                var values2 = JsonConvert.DeserializeObject<List<ResultServiceDTO>>(jsonData2);
+                var values2 = JsonConvert.DeserializeObject<List<ResultServicesDTO>>(jsonData2);
                 ViewBag.Title = values.Select(x=>x.Title).FirstOrDefault();
                 ViewBag.Subtitle = values.Select(x=>x.Subtitle).FirstOrDefault();
                 ViewBag.Description1 = values.Select(x=>x.Description1).FirstOrDefault();

@@ -34,6 +34,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateService(CreateServiceDTO createServiceDTO)
         {
+            createServiceDTO.ServiceStatus = true;
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createServiceDTO);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
