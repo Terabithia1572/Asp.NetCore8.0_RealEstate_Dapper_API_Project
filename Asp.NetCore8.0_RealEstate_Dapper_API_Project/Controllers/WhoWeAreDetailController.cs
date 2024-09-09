@@ -29,7 +29,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
             _whoWeAreDetailRepository.CreateWhoWeAreDetail(createWhoWeAreDetailDTO);
             return Ok("Hakkımızda Detayları Başarılı Bir Şekilde Eklendi");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWhoWeAreDetail(int id)
         {
             _whoWeAreDetailRepository.DeleteWhoWeAreDetail(id);
