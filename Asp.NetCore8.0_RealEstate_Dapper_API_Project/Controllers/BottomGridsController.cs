@@ -1,4 +1,5 @@
-﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.BottomGridRepository;
+﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.BottomGridDTOs;
+using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.BottomGridRepository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,5 +21,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
             var values = await _bottomGridRepository.GetAllBottomGridAsync();
             return Ok(values);
         }
+       
+
     }
 }
