@@ -1,6 +1,4 @@
 ﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.BottomGridDTOs;
-using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.ProductDTOs;
-using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.ServiceDTOs;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.DapperContext;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.BottomGridRepository;
 using Dapper;
@@ -65,12 +63,12 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Bott
 
         public async void UpdateBottomGrid(UpdateBottomGridDTO updateBottomGridDTO)
         {
-            string query = "update Service Set BottomGridIcon=@bottomGridIcon,BottomGridTitle=@bottomGridTitle,BottomGridDescription=@bottomGridDescription where BottomGridID=@bottomGridID";
+            string query = "update BottomGrid Set BottomGridIcon=@bottomGridIcon,BottomGridTitle=@bottomGridTitle,BottomGridDescription=@bottomGridDescription where BottomGridID=@BottomGridID";
             var parameters = new DynamicParameters();
             parameters.Add("@bottomGridIcon", updateBottomGridDTO.BottomGridIcon);
             parameters.Add("@bottomGridTitle", updateBottomGridDTO.BottomGridTitle);
             parameters.Add("@bottomGridDescription", updateBottomGridDTO.BottomGridDescription);
-            parameters.Add("@bottomGridID", updateBottomGridDTO.BottomGridID);
+            parameters.Add("@BottomGridID", updateBottomGridDTO.BottomGridID);
             using (var connections = _context.CreateConnection())
             {
                 await connections.ExecuteAsync(query, parameters);
