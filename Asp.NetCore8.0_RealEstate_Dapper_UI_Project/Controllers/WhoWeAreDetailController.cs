@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
 {
-    public class WhoWeAreController : Controller
+    public class WhoWeAreDetailController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public WhoWeAreController(IHttpClientFactory httpClientFactory)
+        public WhoWeAreDetailController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
