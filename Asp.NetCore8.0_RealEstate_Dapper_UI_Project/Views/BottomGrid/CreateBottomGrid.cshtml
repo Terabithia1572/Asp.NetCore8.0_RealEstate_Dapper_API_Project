@@ -1,0 +1,28 @@
+﻿@model CreateBottomGridDTO
+@{
+    ViewData["Title"] = "CreateBottomGrid";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h1>Yeni Öne Çıkan Alan Ekleme Sayfası</h1>
+                <form method="post">
+                    <label>Başlık</label>
+                    <input type="text" asp-for="BottomGridTitle" class="form-control" />
+                    <br />
+                      <label>İçerik</label>
+                    <input type="text" asp-for="BottomGridDescription" class="form-control" />
+                    <br />
+                    <label>Icon</label>
+                    <input type="text" asp-for="BottomGridIcon" class="form-control" />
+                    <br />
+                    <button class="btn btn-primary">Öne Çıkanı Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
