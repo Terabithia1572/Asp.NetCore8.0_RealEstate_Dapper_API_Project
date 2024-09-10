@@ -27,5 +27,17 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
             var values = await _productRepository.GetAllProductWithCategoryAsync();
             return Ok(values);
         }
+        [HttpGet("ProductDailyOfTheDayStatusChangeToTrue/{id}")]
+        public async Task<IActionResult> ProductDailyOfTheDayStatusChangeToTrue(int id)
+        {
+            _productRepository.ProductDailyOfTheDayStatusChangeToTrue(id);
+            return Ok("İlan Günün Fırsatlarına Eklendi");
+        }
+        [HttpGet("ProductDailyOfTheDayStatusChangeToFalse/{id}")]
+        public async Task<IActionResult> ProductDailyOfTheDayStatusChangeToFalse(int id)
+        {
+            _productRepository.ProductDailyOfTheDayStatusChangeToFalse(id);
+            return Ok("İlan Günün Fırsatlarından Çıkarıldı");
+        }
     }
 }
