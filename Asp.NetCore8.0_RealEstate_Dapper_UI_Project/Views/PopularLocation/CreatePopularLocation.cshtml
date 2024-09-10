@@ -4,5 +4,21 @@
     Layout = "~/Views/Admin/Index.cshtml";
 }
 
-<h1>CreatePopularLocation</h1>
-
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Yeni Popüler Lokasyon Ekleme Sayfası</h6>
+                <form method="post">
+                    <label>Şehir Adı</label>
+                    <input type="text" asp-for="PopularLocationCityName" class="form-control" />
+                    <br />
+                    <label>Şehir Görsel</label>
+                    <input type="text" asp-for="PopularLocationImageURL" class="form-control" />
+                    <br />
+                    <button class="btn btn-primary">Lokasyonu Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
