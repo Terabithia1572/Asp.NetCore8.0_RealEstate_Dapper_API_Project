@@ -34,12 +34,12 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Prod
             }
         }
 
-        public async Task<List<ResultProductDTO>> GetLast5ProductAsync()
+        public async Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5ProductAsync()
         {
-            string query = "select Top(5) * from product where ProductType='Kiralık' order By ProductID desc";
+            string query = "select Top(5) ProductID,ProductTitle,ProductPrice,ProductCity,ProductDistrict,ProductCategory,CategoryName,ProductAdvertisementDate from Product inner join Category on Product.ProductCategory=Category.CategoryID where ProductType='Kiralık' order By ProductID desc\r\n";
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultProductDTO>(query);
+                var values = await connection.QueryAsync<ResultLast5ProductWithCategoryDTO>(query);
                 return values.ToList();
             }
         }
