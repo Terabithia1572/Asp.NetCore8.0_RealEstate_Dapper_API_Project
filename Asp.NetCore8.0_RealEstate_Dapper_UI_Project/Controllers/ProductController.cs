@@ -43,5 +43,25 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             ViewBag.v=categoryValues;
             return View();
         }
+        public async Task<IActionResult> ProductDailyOfTheDayStatusChangeToFalse(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44309/api/Products/ProductDailyOfTheDayStatusChangeToFalse/"+id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+        public async Task<IActionResult> ProductDailyOfTheDayStatusChangeToTrue(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44309/api/Products/ProductDailyOfTheDayStatusChangeToTrue/" + id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }
