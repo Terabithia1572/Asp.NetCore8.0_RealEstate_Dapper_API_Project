@@ -34,6 +34,16 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Prod
             }
         }
 
+        public async Task<List<ResultProductDTO>> GetLast5ProductAsync()
+        {
+            string query = "select Top(5) * from product where ProductType='Kiralık' order By ProductID desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductDTO>(query);
+                return values.ToList();
+            }
+        }
+
         public async void ProductDailyOfTheDayStatusChangeToFalse(int id)
         {
             string query = "Update Product Set ProductDailyOfTheDay=0 where ProductID=@productID";

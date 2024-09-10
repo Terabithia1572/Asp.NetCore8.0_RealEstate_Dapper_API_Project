@@ -39,5 +39,11 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
             _productRepository.ProductDailyOfTheDayStatusChangeToFalse(id);
             return Ok("İlan Günün Fırsatlarından Çıkarıldı");
         }
+        [HttpGet("Last5ProductList")]
+        public async Task<IActionResult> Last5ProductList()
+        {
+            var values = await _productRepository.GetLast5ProductAsync();
+            return Ok(values);
+        }
     }
 }
