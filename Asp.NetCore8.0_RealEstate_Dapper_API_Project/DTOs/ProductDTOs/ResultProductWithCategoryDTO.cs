@@ -12,5 +12,6 @@
         public string ProductAddress { get; set; }
         public string ProductDescription { get; set; }
         public string CategoryName { get; set; }
+        public bool ProductDailyOfTheDay { get; set; }
     }
 }
