@@ -11,11 +11,10 @@
             <button type="button" class="btn btn-primary ms-2">Add</button>
         </div>
         @foreach (var item in Model)
-        {
-            @if (item.ToDoListStatus == true)
+        { @if (item.ToDoListStatus == true)
             {
                 <div class="d-flex align-items-center border-bottom py-2">
-                    <input class="form-check-input m-0" type="checkbox" checked>
+                    <input class="form-check-input m-0" type="checkbox">
                     <div class="w-100 ms-3">
                         <div class="d-flex w-100 align-items-center justify-content-between">
                             <span>@item.ToDoListDescription</span>
@@ -27,7 +26,7 @@
             else
             {
                 <div class="d-flex align-items-center border-bottom py-2">
-                    <input class="form-check-input m-0" type="checkbox">
+                    <input class="form-check-input m-0" type="checkbox" checked>
                     <div class="w-100 ms-3">
                         <div class="d-flex w-100 align-items-center justify-content-between">
                             <span><del>@item.ToDoListDescription</del></span>
@@ -35,12 +34,8 @@
                         </div>
                     </div>
                 </div>
-               
-                
             }
-
-        }
-        
+        }     
 
     </div>
 </div>
