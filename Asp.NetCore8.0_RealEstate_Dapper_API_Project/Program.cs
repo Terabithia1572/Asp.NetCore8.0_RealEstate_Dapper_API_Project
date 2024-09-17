@@ -29,6 +29,11 @@ builder.Services.AddTransient<IStatisticsRepository, StatisticsRepository>();
 builder.Services.AddTransient<IContactRepository, ContactRepository>();
 builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
 
+
+// Add services to the container.
+
+
+
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("CorsPolicy", builder =>
@@ -36,7 +41,9 @@ builder.Services.AddCors(opt =>
         builder.AllowAnyHeader()
         .AllowAnyMethod()
         .SetIsOriginAllowed((host) => true)
-        .AllowCredentials();
+        .AllowCredentials()
+        .AllowAnyOrigin()
+        .WithOrigins("*");
     });
 });
 builder.Services.AddHttpClient();
@@ -47,7 +54,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build(); 
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -57,13 +64,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("CorsPolicy");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
 app.MapHub<SignalRHub>("/signalrhub");
-//localhost:1244/swagger/category/index
-//localhost:1244/swagger/signalrhub
+//localhost:1234/swagger/category/index
+//localhost:1234/signalrhub
 
 app.Run();

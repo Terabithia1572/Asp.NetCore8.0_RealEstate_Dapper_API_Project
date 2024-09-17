@@ -17,8 +17,8 @@
                     <div class="card">
                         <script type="text/javascript">
                             $(document).ready(() => {
-                                var connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:44306/SignalRHub");
-                                });
+                                var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:44306/SignalRHub").build();
+                                $("#connstatus").text(connection.state);
 
                                 connection.start().then(() => {
                                     $("#connstatus").text(connection.state);
