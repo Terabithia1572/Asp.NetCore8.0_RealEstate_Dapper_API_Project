@@ -44,6 +44,18 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Prod
             }
         }
 
+        public async Task<List<ResultProductAdvertListWithCategoryWithByEmployeeDTO>> GetProductAdvertsListByEmployeeAsync(int id)
+        {
+            string query = "select ProductID,ProductTitle,ProductPrice,ProductCoverImage,ProductCity,ProductDistrict,ProductAddress,ProductDescription,ProductType,CategoryName,ProductDailyOfTheDay from Product inner join Category on Product.ProductCategory=Category.CategoryID where EmployeeID=@employeeID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryWithByEmployeeDTO>(query,parameters);
+                return values.ToList();
+            }
+        }
+
         public async void ProductDailyOfTheDayStatusChangeToFalse(int id)
         {
             string query = "Update Product Set ProductDailyOfTheDay=0 where ProductID=@productID";
