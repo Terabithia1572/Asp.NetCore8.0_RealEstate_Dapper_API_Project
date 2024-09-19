@@ -18,13 +18,18 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44309/api/Employees");
-            if (responseMessage.IsSuccessStatusCode)
+            var token=User.Claims.FirstOrDefault(x=>x.Type=="realestatetoken")?.Value;
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultEmployeeDTO>>(jsonData);
-                return View(values);
+
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync("https://localhost:44309/api/Employees");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var values = JsonConvert.DeserializeObject<List<ResultEmployeeDTO>>(jsonData);
+                    return View(values);
+                }
             }
             return View();
         }
