@@ -3,6 +3,6 @@
     public class JWTResponseModel
     {
         public string Token { get; set; }
-        public DateTime DateExpire { get; set; }
+        public DateTime? DateExpire { get; set; }  // DateTime? olarak ayarlayın.
     }
 }

@@ -1,10 +1,12 @@
 ﻿using Asp.NetCore8._0_RealEstate_Dapper_UI_Project.DTOs.EmployeeDTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
