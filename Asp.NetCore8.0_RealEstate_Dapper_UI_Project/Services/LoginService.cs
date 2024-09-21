@@ -1,4 +1,6 @@
-﻿namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Services
+﻿using System.Security.Claims;
+
+namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Services
 {
     public class LoginService : ILoginService
     {
@@ -9,7 +11,7 @@
             _contextAccessor = contextAccessor;
         }
 
-        public string GetUserID => _contextAccessor.HttpContext.User.FindFirst("sub").Value;
+        public string GetUserID => _contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
     }
 }

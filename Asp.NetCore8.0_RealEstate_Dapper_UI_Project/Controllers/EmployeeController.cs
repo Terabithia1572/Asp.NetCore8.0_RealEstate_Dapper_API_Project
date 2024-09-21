@@ -22,7 +22,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         public async Task<IActionResult> Index()
         {
             var user = User.Claims;
-     //       var userID = _loginService.GetUserID;
+            var userID = _loginService.GetUserID;
             var token=User.Claims.FirstOrDefault(x=>x.Type=="realestatetoken")?.Value;
             if (token != null)
             {
