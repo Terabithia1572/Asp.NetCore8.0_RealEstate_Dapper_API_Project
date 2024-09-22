@@ -165,7 +165,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Stat
 
         public int ProductCount()
         {
-            string query = "select Count(*) as 'Toplam Ürün Sayısı' from Category";
+            string query = "select Count(*) as 'Toplam Ürün Sayısı' from Product";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<int>(query);

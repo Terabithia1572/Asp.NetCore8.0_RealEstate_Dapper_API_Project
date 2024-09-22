@@ -12,6 +12,7 @@ using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.WhoWeAre
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.ContactRepositories;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.ToDoListRepositories;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Hubs;
+using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.EstateAgentRepositories.DashboardRepositories.StatisticRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,7 @@ builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddTransient<IStatisticsRepository, StatisticsRepository>();
 builder.Services.AddTransient<IContactRepository, ContactRepository>();
 builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
+builder.Services.AddTransient<IStatisticRepository, StatisticRepository>();
 
 
 // Add services to the container.
