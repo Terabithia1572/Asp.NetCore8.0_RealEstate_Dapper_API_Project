@@ -15,6 +15,7 @@ using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Hubs;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.EstateAgentRepositories.DashboardRepositories.StatisticRepositories;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.EstateAgentRepositories.DashboardRepositories.ChartRepositories;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.EstateAgentRepositories.DashboardRepositories.LastProductRepositories;
+using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.MessageRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,7 @@ builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
 builder.Services.AddTransient<IStatisticRepository, StatisticRepository>();
 builder.Services.AddTransient<IChartRepository, ChartRepository>();
 builder.Services.AddTransient<ILast5ProductRepository, Last5ProductRepository>();
+builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 
 
 // Add services to the container.
