@@ -15,7 +15,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Mess
 
         public async Task< List<ResultInboxMessageDTO>> GetInboxLast3MessageListByReceiver(int id)
         {
-            string query = "select TOP(3) MessageID,Name,MessageSubject,MessageDetail,MessageSendDate,MessageIsRead from Message inner join AppUser on Message.MessageReceiver=AppUser.UserID where MessageReceiver=@messageReceiverID order by MessageID desc\r\n";
+            string query = "select TOP(3) MessageID,Name,MessageSubject,MessageDetail,MessageSendDate,MessageIsRead,UserImageURL from Message inner join AppUser on Message.MessageSender=AppUser.UserID where MessageReceiver=@messageReceiverID order by MessageID desc\r\n";
             var parameters = new DynamicParameters();
             parameters.Add("@messageReceiverID", id);
             using (var connection = _context.CreateConnection())

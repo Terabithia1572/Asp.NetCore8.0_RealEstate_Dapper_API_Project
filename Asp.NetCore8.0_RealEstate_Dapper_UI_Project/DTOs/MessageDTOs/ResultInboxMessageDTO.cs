@@ -1,4 +1,4 @@
-﻿namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.MessageDTOs
+﻿namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.DTOs.MessageDTOs
 {
     public class ResultInboxMessageDTO
     {
