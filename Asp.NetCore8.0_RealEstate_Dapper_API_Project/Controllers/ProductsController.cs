@@ -45,10 +45,16 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
             var values = await _productRepository.GetLast5ProductAsync();
             return Ok(values);
         }
-        [HttpGet("ProductAdvertsListByEmployee")]
-        public async Task<IActionResult> ProductAdvertsListByEmployee(int id)
+        [HttpGet("ProductAdvertsListByEmployeeByTrue")]
+        public async Task<IActionResult> ProductAdvertsListByEmployeeByTrue(int id)
         {
-            var values = await _productRepository.GetProductAdvertsListByEmployeeAsync(id);
+            var values = await _productRepository.GetProductAdvertsListByEmployeeAsyncByTrue(id);
+            return Ok(values);
+        }
+        [HttpGet("ProductAdvertsListByEmployeeByFalse")]
+        public async Task<IActionResult> ProductAdvertsListByEmployeeByFalse(int id)
+        {
+            var values = await _productRepository.GetProductAdvertsListByEmployeeAsyncByFalse(id);
             return Ok(values);
         }
     }

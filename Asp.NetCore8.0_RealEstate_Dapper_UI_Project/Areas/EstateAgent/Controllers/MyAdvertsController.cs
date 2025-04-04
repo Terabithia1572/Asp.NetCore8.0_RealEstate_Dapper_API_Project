@@ -18,12 +18,26 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Areas.EstateAgent.Control
             _loginService = loginService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> ActiveAdverts()
         {
             var id = _loginService.GetUserID;
 
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44309/api/Products/ProductAdvertsListByEmployee?id="+id);
+            var responseMessage = await client.GetAsync("https://localhost:44309/api/Products/ProductAdvertsListByEmployeeByTrue?id=" + id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultProductAdvertListWithCategoryWithByEmployeeDTO>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+        public async Task<IActionResult> PassiveAdverts()
+        {
+            var id = _loginService.GetUserID;
+
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44309/api/Products/ProductAdvertsListByEmployeeByFalse?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
