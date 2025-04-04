@@ -1,4 +1,5 @@
-﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.ProductRepository;
+﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.ProductDTOs;
+using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.ProductRepository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -56,6 +57,16 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         {
             var values = await _productRepository.GetProductAdvertsListByEmployeeAsyncByFalse(id);
             return Ok(values);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(CreateProductDTO createProductDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                await _productRepository.CreateProduct(createProductDTO);
+                return Ok("İlan Başarıyla Eklendi");
+            }
+            return BadRequest("İlan Eklenemedi");
         }
     }
 }
