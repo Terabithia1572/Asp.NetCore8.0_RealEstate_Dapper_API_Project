@@ -1,4 +1,5 @@
-﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.ProductDTOs;
+﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.ProductDetailDTO;
+using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.ProductDTOs;
 
 namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.ProductRepository
 {
@@ -8,9 +9,12 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Prod
         Task<List<ResultProductAdvertListWithCategoryWithByEmployeeDTO>> GetProductAdvertsListByEmployeeAsyncByTrue(int id);
         Task<List<ResultProductAdvertListWithCategoryWithByEmployeeDTO>> GetProductAdvertsListByEmployeeAsyncByFalse(int id);
         Task<List<ResultProductWithCategoryDTO> > GetAllProductWithCategoryAsync();
-        void ProductDailyOfTheDayStatusChangeToTrue(int id);
-        void ProductDailyOfTheDayStatusChangeToFalse(int id);
+        Task ProductDailyOfTheDayStatusChangeToTrue(int id);
+        Task ProductDailyOfTheDayStatusChangeToFalse(int id);
         Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5ProductAsync();
         Task CreateProduct(CreateProductDTO createProductDTO);
+
+        Task<GetProductByProductIDDTO> GetProductByProductID(int id);
+        Task<GetProductDetailByIDDTO> GetProductDetailByProductID(int id);
     }
 }

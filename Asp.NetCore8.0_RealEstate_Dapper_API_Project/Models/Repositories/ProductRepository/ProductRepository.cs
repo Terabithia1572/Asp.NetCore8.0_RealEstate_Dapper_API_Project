@@ -1,4 +1,5 @@
 ﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.CategoryDTOs;
+using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.ProductDetailDTO;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.ProductDTOs;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.DapperContext;
 using Dapper;
@@ -93,7 +94,33 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Prod
             }
         }
 
-        public async void ProductDailyOfTheDayStatusChangeToFalse(int id)
+        public async Task<GetProductByProductIDDTO> GetProductByProductID(int id)
+        {
+            string query = "select ProductID,ProductTitle,ProductPrice,ProductCoverImage,ProductCity,ProductDistrict,ProductAddress,ProductDescription,ProductType,CategoryName,ProductDailyOfTheDay from Product inner join Category on Product.ProductCategory=Category.CategoryID where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<GetProductByProductIDDTO>(query,parameters);
+                return values.FirstOrDefault();
+            }
+            
+        }
+
+        public async Task<GetProductDetailByIDDTO> GetProductDetailByProductID(int id)
+        {
+            string query = "select * from ProductDetails where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<GetProductDetailByIDDTO>(query, parameters);
+                return values.FirstOrDefault();
+            }
+
+        }
+
+        public async Task ProductDailyOfTheDayStatusChangeToFalse(int id)
         {
             string query = "Update Product Set ProductDailyOfTheDay=0 where ProductID=@productID";
             var parameters = new DynamicParameters();
@@ -104,7 +131,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Prod
             }
         }
 
-        public async void ProductDailyOfTheDayStatusChangeToTrue(int id)
+        public async Task ProductDailyOfTheDayStatusChangeToTrue(int id)
         {
             string query = "Update Product Set ProductDailyOfTheDay=1 where ProductID=@productID";
             var parameters = new DynamicParameters();

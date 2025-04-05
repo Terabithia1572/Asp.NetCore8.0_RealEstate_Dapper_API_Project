@@ -68,5 +68,13 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
             }
             return BadRequest("İlan Eklenemedi");
         }
+        [HttpGet("GetProductByProductID")]
+        public async Task<IActionResult> GetProductByProductID(int id)
+        {
+            var values = await _productRepository.GetProductByProductID(id);
+            return Ok(values);
+        }
+       
+        //GetProductDetailByProductID
     }
 }
