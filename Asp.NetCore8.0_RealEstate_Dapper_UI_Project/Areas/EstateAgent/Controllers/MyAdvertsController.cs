@@ -4,6 +4,7 @@ using Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Areas.EstateAgent.Controllers
 {
@@ -65,9 +66,24 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Areas.EstateAgent.Control
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateAdvert(string x)
+        public async Task<IActionResult> CreateAdvert(CreateProductDTO createProductDTO)
         {
-            
+           
+            createProductDTO.ProductDailyOfTheDay = false;
+            createProductDTO.ProductAdvertisementDate = DateTime.Now;
+            createProductDTO.ProductStatus = true;
+
+            var id = _loginService.GetUserID;
+
+            createProductDTO.EmployeeID = int.Parse(id);
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createProductDTO);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:44309/api/Products", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
             return View();
         }
     }
