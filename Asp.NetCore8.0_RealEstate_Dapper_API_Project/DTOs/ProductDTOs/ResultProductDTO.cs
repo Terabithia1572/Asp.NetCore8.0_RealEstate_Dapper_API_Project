@@ -12,5 +12,6 @@
         public string ProductDescription { get; set; }
         public string ProductType { get; set; }
         public int ProductCategory { get; set; }
+        //public DateTime ProductAdvertisementDate { get; set; }
     }
 }

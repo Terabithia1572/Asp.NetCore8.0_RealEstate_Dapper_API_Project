@@ -13,5 +13,6 @@
         public string ProductDescription { get; set; }
         public string CategoryName { get; set; }
         public bool ProductDailyOfTheDay { get; set; }
+        public DateTime ProductAdvertisementDate { get; set; }
     }
 }
