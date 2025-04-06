@@ -51,6 +51,12 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             ViewBag.bathCount = values2.ProductBathCount;
             ViewBag.bedCount = values2.ProductBedRoomCount;
             ViewBag.size = values2.ProductSize;
+            ViewBag.description = values.ProductDescription;
+            ViewBag.productID = values.ProductID;
+            ViewBag.roomCount = values2.ProductRoomCount;
+            ViewBag.garageCount = values2.ProductGarageSize;
+            ViewBag.buildYear = values2.ProductBuildYear;
+            ViewBag.date=values.ProductAdvertisementDate.ToString("dd/MM/yyyy");
 
             return View();
         }

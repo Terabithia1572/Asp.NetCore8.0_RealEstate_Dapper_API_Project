@@ -54,35 +54,26 @@
                     @await Component.InvokeAsync("_PropertySliderComponentPartial")
 
                     <div class="single-post-content">
-                        <h3 class="post-content-title mb-3">Description</h3>
+                        <h3 class="post-content-title mb-3">İlan Açıklaması</h3>
                         <p class="mb-4">
-                            Lorem model text, and a search for 'lorem ipsum' will uncover many web sites still in their
-                            infancy. Various
-                            versions have evolved over the years, sometimes by accident, sometimes on purpose
-                            injected humour and the like.
+                            @ViewBag.description
                         </p>
-                        <p class="mb-4">
-                            When you decide to put your business online it is a little bet tricky step
-                            for novice
-                            computer users because they want to keep data safe & secure.
-                            This problem developed from companies which did not take security seriously. Lorem ipsum
-                            dolor sit amet elit.
-                        </p>
+                       
                         <div class="single-bg-white">
-                            <h3 class="post-content-title mb-4">Property detail</h3>
+                            <h3 class="post-content-title mb-4">İlan Detayları</h3>
                             <ul class="details-list">
-                                <li><strong>Property id :</strong> PRPT12345 </li>
-                                <li><strong>Property size :</strong> 1200sqft </li>
-                                <li><strong>Rooms :</strong> 2 </li>
-                                <li><strong>Bedrooms :</strong> 5 </li>
-                                <li><strong>Bathrooms :</strong> 2 </li>
+                                <li><strong>İlan ID :</strong> @ViewBag.productID </li>
+                                <li><strong>Metre Kare :</strong>@ViewBag.size 1200 m² </li>
+                                <li><strong>Oda Sayısı :</strong> @ViewBag.roomCount </li>
+                                <li><strong>Yatak Odası :</strong> @ViewBag.bedCount </li>
+                                <li><strong>Banyo Sayısı :</strong> @ViewBag.bathCount </li>
                                 <li><strong>Exterior material :</strong> Brick </li>
-                                <li><strong>Structure type :</strong> Wood </li>
-                                <li><strong>Garage size :</strong> 15 cars </li>
+                                <li><strong>Yapı Türü :</strong> Beton </li>
+                                <li><strong>Garaj Sayısı :</strong> @ViewBag.garageCount </li>
                                 <li><strong>Garages :</strong> 15 </li>
-                                <li><strong>Property Price :</strong> $ 750 </li>
-                                <li><strong>Built Year :</strong> 2018 </li>
-                                <li><strong>Avaiable from :</strong> Aug 2019 </li>
+                                <li><strong>Fiyat :</strong> @ViewBag.price ₺ </li>
+                                <li><strong>Yapım Yılı :</strong> @ViewBag.buildYear </li>
+                                <li><strong>İlan Tarihi :</strong> @ViewBag.date </li>
                             </ul>
                         </div>
                         <div class="single-bg-white">
