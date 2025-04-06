@@ -35,6 +35,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             var responseMessage = await client.GetAsync("https://localhost:44309/api/Products/GetProductByProductID?id=" + id);
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<ResultProductDTO>(jsonData);
+
             var client2 = _httpClientFactory.CreateClient();
             var responseMessage2 = await client2.GetAsync("https://localhost:44309/api/ProductDetails/GetProductDetailByProductID?id=" + id);
             var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
@@ -46,10 +47,31 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             ViewBag.district = values.ProductDistrict;
             ViewBag.address = values.ProductAddress;
             ViewBag.type = values.ProductType;
-            //ViewBag.datediff=values.
-            ViewBag.bathCount=values2.ProductBathCount;
+            ViewBag.datediff = GetTimeAgo(values.ProductAdvertisementDate); // <-- Burası güncellendi
+            ViewBag.bathCount = values2.ProductBathCount;
+            ViewBag.bedCount = values2.ProductBedRoomCount;
+            ViewBag.size = values2.ProductSize;
 
             return View();
         }
+
+        private string GetTimeAgo(DateTime dateTime)
+        {
+            var timeSpan = DateTime.Now - dateTime;
+
+            if (timeSpan.TotalMinutes < 1)
+                return "az önce eklendi";
+            else if (timeSpan.TotalMinutes < 60)
+                return $"{(int)timeSpan.TotalMinutes} dakika önce eklendi";
+            else if (timeSpan.TotalHours < 24)
+                return $"{(int)timeSpan.TotalHours} saat önce eklendi";
+            else if (timeSpan.TotalDays < 30)
+                return $"{(int)timeSpan.TotalDays} gün önce eklendi";
+            else if (timeSpan.TotalDays < 365)
+                return $"{(int)(timeSpan.TotalDays / 30)} ay önce eklendi";
+            else
+                return $"{(int)(timeSpan.TotalDays / 365)} yıl önce eklendi";
+        }
+
     }
 }
