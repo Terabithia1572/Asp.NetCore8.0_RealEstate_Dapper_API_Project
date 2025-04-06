@@ -4,7 +4,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Prod
 {
     public interface IProductImageRepository
     {
-        Task<GetProductImageByProductIDDTO> GetProductImageByProductID(int id);
+        Task<List<GetProductImageByProductIDDTO>> GetProductImageByProductID(int id);
 
     }
 }
