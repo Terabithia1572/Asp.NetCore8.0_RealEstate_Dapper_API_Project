@@ -18,6 +18,7 @@ using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.EstateAg
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.MessageRepositories;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.ProductImageRepositories;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.AppUserRepositories;
+using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.PropertyAmenityRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,7 @@ builder.Services.AddTransient<ILast5ProductRepository, Last5ProductRepository>()
 builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 builder.Services.AddTransient<IProductImageRepository, ProductImageRepository>();
 builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
+builder.Services.AddTransient<IPropertyAmenityRepository, PropertyAmenityRepository>();
 
 
 // Add services to the container.
