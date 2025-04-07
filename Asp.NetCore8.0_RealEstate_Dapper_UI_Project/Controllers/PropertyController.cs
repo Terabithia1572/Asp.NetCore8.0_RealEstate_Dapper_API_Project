@@ -57,6 +57,8 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             ViewBag.garageCount = values2.ProductGarageSize;
             ViewBag.buildYear = values2.ProductBuildYear;
             ViewBag.date=values.ProductAdvertisementDate.ToString("dd/MM/yyyy");
+            ViewBag.location = values2.ProductLocation;
+            ViewBag.videoURL = values2.ProductVideoURL;
 
             return View();
         }
