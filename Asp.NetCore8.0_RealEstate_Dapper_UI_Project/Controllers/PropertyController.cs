@@ -62,6 +62,22 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
 
             return View();
         }
+        public async Task<IActionResult> PropertyListWithSearch(string searchKeyValue, int propertyCategoryID, string city)
+        {
+            ViewBag.v = TempData["word"];
+            searchKeyValue = "Daire";
+            propertyCategoryID = 1;
+            city = "İzmir";
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44309/api/Products/ResultProductWithSearchList?searchKeyValue=" + searchKeyValue + "&propertyCategoryID=" + propertyCategoryID + "&city=" + city);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultProductWithSearchListDTO>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
 
         private string GetTimeAgo(DateTime dateTime)
         {
