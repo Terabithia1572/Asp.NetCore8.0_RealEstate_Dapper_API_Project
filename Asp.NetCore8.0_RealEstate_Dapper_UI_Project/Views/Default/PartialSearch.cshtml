@@ -1,4 +1,6 @@
-﻿<section class="w3l-cover-3">
+﻿@model List<ResultCategoryDTO>
+
+<section class="w3l-cover-3">
 	<div class="cover top-bottom">
 		<div class="container">
 			<div class="middle-section text-center">
@@ -18,24 +20,22 @@
 						<span class="input-group-btn">
 							<select class="btn btn-default" name="ext" required>
 								<option selected="">Gayri Menkul Türü</option>
-								<option>Villa</option>
-								<option>Apartment</option>
-								<option>Private house</option>
-								<option>Building</option>
-								<option>Shop</option>
-								<option>Social housing</option>
-								<option>Town house</option>
+                                @foreach (var item in Model)
+                                {
+                                    <option value="@item.CategoryName">@item.CategoryName</option>
+                                }
 							</select>
 						</span>
 						<span class="input-group-btn">
-							<select class="btn btn-default" name="ext" required>
-								<option selected="">Ülke Seçiniz</option>
-								<option>Türkiye</option>
-								<option>London</option>
-								<option>India</option>
-								<option>Bangladesh</option>
-								<option>Saudi Arabia</option>
-								<option>America</option>
+							<select class="btn btn-default" name="y" required>
+								<option selected="">Şehir Seçiniz</option>
+								<option>İstanbul</option>
+								<option>İzmir</option>
+								<option>Paris</option>
+								<option>Milano</option>
+								<option>Sofya</option>
+								<option>Berlin</option>
+								<option>Texas</option>
 								<option>Srilanka</option>
 							</select>
 						</span>

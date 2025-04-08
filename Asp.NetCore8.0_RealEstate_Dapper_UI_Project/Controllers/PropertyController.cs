@@ -65,6 +65,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         public async Task<IActionResult> PropertyListWithSearch(string searchKeyValue, int propertyCategoryID, string city)
         {
             ViewBag.v = TempData["word"];
+            ViewBag.v1 = TempData["word1"];
             searchKeyValue = "Daire";
             propertyCategoryID = 1;
             city = "İzmir";
