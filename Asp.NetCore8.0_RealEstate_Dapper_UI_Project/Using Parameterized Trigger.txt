@@ -1,0 +1,21 @@
+﻿INSERT 
+
+Create Trigger IncreaseLocationCount 
+On Product
+After Insert
+As
+Declare @city nvarchar(50)
+Select @City=ProductCity from inserted
+Update PopularLocation Set PropertyCount+=1 where PopularLocationCityName=@City
+
+
+UPDATE
+
+Create Trigger IncreaseLocationCountUpdate
+On Product
+After Update
+As
+Declare @city nvarchar(50)
+Select @City=ProductCity from inserted
+Update PopularLocation Set PropertyCount+=1 where PopularLocationCityName=@City
+
