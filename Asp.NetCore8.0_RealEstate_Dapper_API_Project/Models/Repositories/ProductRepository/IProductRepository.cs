@@ -17,5 +17,6 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Prod
         Task<GetProductByProductIDDTO> GetProductByProductID(int id);
         Task<GetProductDetailByIDDTO> GetProductDetailByProductID(int id);
         Task<List<ResultProductWithSearchListDTO>> ResultProductWithSearchList(string searchKeyValue,int propertyCategoryID,string city);
+        Task<List<ResultProductWithCategoryDTO>> GetProductDailyOfTheDayTrueWithCategoryAsync();
     }
 }

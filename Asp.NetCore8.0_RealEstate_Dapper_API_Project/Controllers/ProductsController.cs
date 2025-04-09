@@ -82,6 +82,12 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
             return Ok(values);
         }
 
-        //GetProductDetailByProductID
+        [HttpGet("GetProductDailyOfTheDayTrueWithCategory")]
+        public async Task<IActionResult> GetProductDailyOfTheDayTrueWithCategory()
+        {
+            var values = await _productRepository.GetProductDailyOfTheDayTrueWithCategoryAsync();
+            return Ok(values);
+        }
+
     }
 }
