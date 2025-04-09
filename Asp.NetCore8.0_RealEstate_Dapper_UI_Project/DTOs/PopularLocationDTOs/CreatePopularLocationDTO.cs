@@ -4,5 +4,6 @@
     {
         public string PopularLocationCityName { get; set; }
         public string PopularLocationImageURL { get; set; }
+        public int PropertyCount { get; set; }
     }
 }

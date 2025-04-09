@@ -19,6 +19,7 @@ using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.MessageR
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.ProductImageRepositories;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.AppUserRepositories;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.PropertyAmenityRepositories;
+using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.SubFeatureRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +43,7 @@ builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 builder.Services.AddTransient<IProductImageRepository, ProductImageRepository>();
 builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
 builder.Services.AddTransient<IPropertyAmenityRepository, PropertyAmenityRepository>();
+builder.Services.AddTransient<ISubFeatureRepository, SubFeatureRepository>();
 
 
 // Add services to the container.
