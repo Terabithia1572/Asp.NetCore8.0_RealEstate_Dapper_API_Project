@@ -64,11 +64,10 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         }
         public async Task<IActionResult> PropertyListWithSearch(string searchKeyValue, int propertyCategoryID, string city)
         {
-            ViewBag.v = TempData["word"];
-            ViewBag.v1 = TempData["word1"];
-            searchKeyValue = "Daire";
-            propertyCategoryID = 1;
-            city = "İzmir";
+         
+            searchKeyValue = TempData["searchKeyValue"].ToString();
+            propertyCategoryID = int.Parse((TempData["propertyCategoryID"]).ToString());
+            city = TempData["city"].ToString();
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44309/api/Products/ResultProductWithSearchList?searchKeyValue=" + searchKeyValue + "&propertyCategoryID=" + propertyCategoryID + "&city=" + city);
             if (responseMessage.IsSuccessStatusCode)

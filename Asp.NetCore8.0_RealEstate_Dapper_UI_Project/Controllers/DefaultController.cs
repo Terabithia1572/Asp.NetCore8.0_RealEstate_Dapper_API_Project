@@ -12,8 +12,16 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
-        public IActionResult Index()
+        public async Task< IActionResult> Index()
         {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44309/api/Categories");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultCategoryDTO>>(jsonData);
+                return View(values);
+            }
             return View();
         }
         [HttpGet]
@@ -30,10 +38,11 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             return PartialView();
         }
         [HttpPost]
-        public IActionResult PartialSearch(string p,string y)
+        public IActionResult PartialSearch(string searchKeyValue,string city, int propertyCategoryID)
         {
-            TempData["word"] = p;
-            TempData["word1"] = y;
+            TempData["searchKeyValue"] = searchKeyValue;
+            TempData["city"] = city;
+            TempData["propertyCategoryID"] = propertyCategoryID;
 
             return RedirectToAction("PropertyListWithSearch", "Property");
         }
