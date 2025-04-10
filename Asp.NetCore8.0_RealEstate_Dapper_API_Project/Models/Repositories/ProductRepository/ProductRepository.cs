@@ -165,5 +165,15 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Prod
                 return values.ToList();
             }
         }
+
+        public async Task<List<ResultLast3ProductWithCategoryDTO>> GetLast3ProductAsync()
+        {
+            string query = "select Top(3) ProductID,ProductTitle,ProductPrice,ProductCity,ProductDistrict,ProductCategory,CategoryName,ProductAdvertisementDate,ProductCoverImage,ProductDescription from Product inner join Category on Product.ProductCategory=Category.CategoryID order By ProductID desc\r\n";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultLast3ProductWithCategoryDTO>(query);
+                return values.ToList();
+            }
+        }
     }
 }

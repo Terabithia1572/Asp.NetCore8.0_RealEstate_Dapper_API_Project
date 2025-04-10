@@ -88,6 +88,12 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
             var values = await _productRepository.GetProductDailyOfTheDayTrueWithCategoryAsync();
             return Ok(values);
         }
+        [HttpGet("GetLast3Product")]
+        public async Task<IActionResult> GetLast3Product()
+        {
+            var values = await _productRepository.GetLast3ProductAsync();
+            return Ok(values);
+        }
 
     }
 }

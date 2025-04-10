@@ -12,6 +12,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Prod
         Task ProductDailyOfTheDayStatusChangeToTrue(int id);
         Task ProductDailyOfTheDayStatusChangeToFalse(int id);
         Task<List<ResultLast5ProductWithCategoryDTO>> GetLast5ProductAsync();
+        Task<List<ResultLast3ProductWithCategoryDTO>> GetLast3ProductAsync();
         Task CreateProduct(CreateProductDTO createProductDTO);
 
         Task<GetProductByProductIDDTO> GetProductByProductID(int id);
