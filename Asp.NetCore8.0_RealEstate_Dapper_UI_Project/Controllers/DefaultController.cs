@@ -1,4 +1,5 @@
 ﻿using Asp.NetCore8._0_RealEstate_Dapper_UI_Project.DTOs.CategoryDTOs;
+using Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -7,15 +8,18 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
     public class DefaultController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ApiSettings _apiSettings;
 
-        public DefaultController(IHttpClientFactory httpClientFactory)
+        public DefaultController(IHttpClientFactory httpClientFactory, ApiSettings apiSettings)
         {
             _httpClientFactory = httpClientFactory;
+            _apiSettings = apiSettings;
         }
+        //https://localhost:44309/api/Categories
         public async Task< IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44309/api/Categories");
+            var responseMessage = await client.GetAsync(_apiSettings+ "Categories");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();

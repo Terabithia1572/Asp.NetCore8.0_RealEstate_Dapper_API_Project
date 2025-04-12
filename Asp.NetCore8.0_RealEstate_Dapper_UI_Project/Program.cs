@@ -1,8 +1,12 @@
+using Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Models;
 using Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettingsKey"));
+builder.Services.AddScoped<ApiSettings>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
