@@ -1,6 +1,7 @@
 ﻿using Asp.NetCore8._0_RealEstate_Dapper_UI_Project.DTOs.CategoryDTOs;
 using Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
@@ -10,16 +11,17 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ApiSettings _apiSettings;
 
-        public DefaultController(IHttpClientFactory httpClientFactory, ApiSettings apiSettings)
+        public DefaultController(IHttpClientFactory httpClientFactory,IOptions<ApiSettings>  apiSettings)
         {
             _httpClientFactory = httpClientFactory;
-            _apiSettings = apiSettings;
+            _apiSettings = apiSettings.Value;
         }
         //https://localhost:44309/api/Categories
         public async Task< IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync(_apiSettings+ "Categories");
+            client.BaseAddress = new Uri(_apiSettings.BaseUrl);
+            var responseMessage = await client.GetAsync("Categories");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();

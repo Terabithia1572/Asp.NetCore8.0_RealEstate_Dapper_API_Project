@@ -6,7 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettingsKey"));
-builder.Services.AddScoped<ApiSettings>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
