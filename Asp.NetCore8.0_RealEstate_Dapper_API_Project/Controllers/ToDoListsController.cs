@@ -19,7 +19,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         [HttpGet]
         public async Task<IActionResult> ToDoListList()
         {
-            var values = await _toDoListRepository.GetAllToDoListAsync();
+            var values = await _toDoListRepository.GetAllToDoList();
             return Ok(values);
             //NULL UPDATE
 
@@ -27,19 +27,19 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateToDoListAsync(CreateToDoListDTO createToDoListDTO)
         {
-            _toDoListRepository.CreateToDoList(createToDoListDTO);
+            await _toDoListRepository.CreateToDoList(createToDoListDTO);
             return Ok("Personel Başarılı Bir Şekilde Eklendi");
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteToDoList(int id)
         {
-            _toDoListRepository.DeleteToDoList(id);
+            await _toDoListRepository.DeleteToDoList(id);
             return Ok("Personel Başarılı Bir Şekilde Silindi.");
         }
         [HttpPut]
         public async Task<IActionResult> UpdateToDoList(UpdateToDoListDTO updateToDoListDTO)
         {
-            _toDoListRepository.UpdateToDoList(updateToDoListDTO);
+            await _toDoListRepository.UpdateToDoList(updateToDoListDTO);
             return Ok("Personel Başarılı Bir Şekilde Güncellendi.");
         }
         [HttpGet("{id}")]

@@ -18,7 +18,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         [HttpGet]
         public async Task<IActionResult> CategoryList()
         {
-            var values=await _categoryRepository.GetAllCategoryAsync();
+            var values=await _categoryRepository.GetAllCategory();
             return Ok(values);
             //NULL UPDATE
 
@@ -26,19 +26,19 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCategoryAsync(CreateCategoryDTO createCategoryDTO)
         {
-             _categoryRepository.CreateCategory(createCategoryDTO);
+            await _categoryRepository.CreateCategory(createCategoryDTO);
             return Ok("Kategori Başarılı Bir Şekilde Eklendi");
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            _categoryRepository.DeleteCategory(id);
+            await _categoryRepository.DeleteCategory(id);
             return Ok("Kategori Başarılı Bir Şekilde Silindi.");
         }
         [HttpPut]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDTO updateCategoryDTO)
         {
-            _categoryRepository.UpdateCategory(updateCategoryDTO);
+            await _categoryRepository.UpdateCategory(updateCategoryDTO);
             return Ok("Kategori Başarılı Bir Şekilde Güncellendi.");
         }
         [HttpGet("{id}")]

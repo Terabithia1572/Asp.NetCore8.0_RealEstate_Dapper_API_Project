@@ -19,25 +19,25 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         [HttpGet]
         public async Task< IActionResult> GetServiceList() {
 
-            var values =await _serviceRepository.GetAllServiceAsync();
+            var values =await _serviceRepository.GetAllService();
             return Ok(values);
         }
         [HttpPost]
         public async Task<IActionResult> CreateServiceAsync(CreateServiceDTO createServiceDTO)
         {
-            _serviceRepository.CreateService(createServiceDTO);
+            await _serviceRepository.CreateService(createServiceDTO);
             return Ok("Servis Detayları Başarılı Bir Şekilde Eklendi");
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteService(int id)
         {
-            _serviceRepository.DeleteService(id);
+            await _serviceRepository.DeleteService(id);
             return Ok("Servis Detayları Başarılı Bir Şekilde Silindi.");
         }
         [HttpPut]
         public async Task<IActionResult> UpdateService(UpdateServiceDTO updateServiceDTO)
         {
-            _serviceRepository.UpdateService(updateServiceDTO);
+            await _serviceRepository.UpdateService(updateServiceDTO);
             return Ok("Servis Detayları Başarılı Bir Şekilde Güncellendi.");
         }
         [HttpGet("{id}")]

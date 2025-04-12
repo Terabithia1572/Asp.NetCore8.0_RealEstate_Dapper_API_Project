@@ -4,10 +4,10 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Cont
 {
     public interface IContactRepository
     {
-        Task<List<ResultContactDTO>> GetAllContactAsync();
+        Task<List<ResultContactDTO>> GetAllContact();
         Task<List<Last4ContactResultDTO>> GetLast4Contact();
-        void CreateContact(CreateContactDTO createContactDTO);
-        void DeleteContact(int id);
+        Task CreateContact(CreateContactDTO createContactDTO);
+        Task DeleteContact(int id);
         Task<GetByIDContactDTO> GetContact(int id);
     }
 }

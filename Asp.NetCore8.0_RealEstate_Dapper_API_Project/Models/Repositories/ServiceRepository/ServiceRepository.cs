@@ -14,7 +14,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Serv
             _context = context;
         }
 
-        public async void CreateService(CreateServiceDTO createServiceDTO)
+        public async Task CreateService(CreateServiceDTO createServiceDTO)
         {
             string query = "insert into Service (ServiceName,ServiceStatus) values (@serviceName,@serviceStatus)";
             var parameters = new DynamicParameters();
@@ -26,7 +26,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Serv
             }
         }
 
-        public async void DeleteService(int id)
+        public async Task DeleteService(int id)
         {
             string query = "delete from Service where ServiceID=@ServiceID";
             var parameters = new DynamicParameters();
@@ -38,7 +38,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Serv
             }
         }
 
-        public async Task<List<ResultServiceDTO>> GetAllServiceAsync()
+        public async Task<List<ResultServiceDTO>> GetAllService()
         {
 
             string query = "select * from Service";
@@ -61,7 +61,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Serv
             }
         }
 
-        public async void UpdateService(UpdateServiceDTO updateServiceDTO)
+        public async Task UpdateService(UpdateServiceDTO updateServiceDTO)
         {
             string query = "update Service Set ServiceName=@serviceName,ServiceStatus=@serviceStatus where ServiceID=@serviceID";
             var parameters = new DynamicParameters();

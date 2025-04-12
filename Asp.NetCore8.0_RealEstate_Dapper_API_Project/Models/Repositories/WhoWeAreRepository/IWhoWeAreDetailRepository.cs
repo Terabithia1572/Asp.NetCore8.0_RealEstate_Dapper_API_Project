@@ -5,10 +5,10 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.WhoW
 {
     public interface IWhoWeAreDetailRepository
     {
-        Task<List<ResultWhoWeAreDetailDTO>> GetAllWhoWeAreDetailAsync();
-        void CreateWhoWeAreDetail(CreateWhoWeAreDetailDTO createWhoWeAreDetailDTO);
-        void DeleteWhoWeAreDetail(int id);
-        void UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDTO updateWhoWeAreDetailDTO);
+        Task<List<ResultWhoWeAreDetailDTO>> GetAllWhoWeAreDetail();
+        Task CreateWhoWeAreDetail(CreateWhoWeAreDetailDTO createWhoWeAreDetailDTO);
+        Task DeleteWhoWeAreDetail(int id);
+        Task UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDTO updateWhoWeAreDetailDTO);
         Task<GetByIDWhoWeAreDetail> GetWhoWeAreDetail(int id);
     }
 }

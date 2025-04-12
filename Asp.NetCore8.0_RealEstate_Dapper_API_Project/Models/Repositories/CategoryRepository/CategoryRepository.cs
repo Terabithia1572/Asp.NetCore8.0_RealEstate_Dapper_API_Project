@@ -19,7 +19,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Cate
             _context = context;
         }
 
-        public async void CreateCategory(CreateCategoryDTO createCategoryDTO) 
+        public async Task CreateCategory(CreateCategoryDTO createCategoryDTO) 
      //Bu kod, bir kategoriyi veritabanına eklemek için kullanılan bir metodu tanımlar. Metodun amacı, verilen kategoriyi veritabanına kaydetmektir. Aşağıda kodun detaylı açıklaması bulunmaktadır:
         {
 //            public: Bu metot, sınıfın dışından erişilebilir.
@@ -43,7 +43,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Cate
 //Özetle: Bu metod, verilen kategori bilgilerini alır ve bu bilgileri kullanarak Category tablosuna yeni bir kayıt ekler.Asenkron çalıştığı için diğer işlemler devam ederken bu işlem arka planda yürütülür.
         }
 
-        public async void DeleteCategory(int id)
+        public async Task DeleteCategory(int id)
         {
             string query = "delete from Category where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
@@ -56,7 +56,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Cate
             
         }
 
-        public async Task<List<ResultCategoryDTO>> GetAllCategoryAsync()
+        public async Task<List<ResultCategoryDTO>> GetAllCategory()
         {
             string query = "select * from Category";
             using(var connection=_context.CreateConnection())
@@ -78,7 +78,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Cate
             }
         }
 
-        public async void UpdateCategory(UpdateCategoryDTO updateCategoryDTO)
+        public async Task UpdateCategory(UpdateCategoryDTO updateCategoryDTO)
         {
             string query = "Update Category Set CategoryName=@categoryName,CategoryStatus=@categoryStatus where CategoryID=@categoryID";
             var parameters = new DynamicParameters();

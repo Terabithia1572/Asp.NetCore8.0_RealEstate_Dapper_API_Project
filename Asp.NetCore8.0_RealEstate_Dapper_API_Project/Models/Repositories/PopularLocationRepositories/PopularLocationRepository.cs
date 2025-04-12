@@ -1,6 +1,4 @@
-﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.BottomGridDTOs;
-using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.PopularLocationDTO;
-using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.ServiceDTOs;
+﻿using Asp.NetCore8._0_RealEstate_Dapper_API_Project.DTOs.PopularLocationDTO;
 using Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.DapperContext;
 using Dapper;
 
@@ -15,7 +13,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Popu
             _context = context;
         }
 
-        public async void CreatePopularLocation(CreatePopularLocationDTO createPopularLocationDTO)
+        public async Task CreatePopularLocation(CreatePopularLocationDTO createPopularLocationDTO)
         {
             string query = "insert into PopularLocation (PopularLocationCityName,PopularLocationImageURL) values (@popularLocationCityName,@popularLocationImageURL)";
             var parameters = new DynamicParameters();
@@ -27,7 +25,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Popu
             }
         }
 
-        public async void DeletePopularLocation(int id)
+        public async Task DeletePopularLocation(int id)
         {
 
             string query = "delete from PopularLocation where PopularLocationID=@popularLocationID";
@@ -40,7 +38,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Popu
             }
         }
 
-        public async Task<List<ResultPopularLocationDTO>> GetAllPopularLocationAsync()
+        public async Task<List<ResultPopularLocationDTO>> GetAllPopularLocation()
         {
             string query = "select * from PopularLocation";
             using (var connection = _context.CreateConnection())
@@ -63,7 +61,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Popu
             }
         }
 
-        public async void UpdatePopularLocation(UpdatePopularLocationDTO updatePopularLocationDTO)
+        public async Task UpdatePopularLocation(UpdatePopularLocationDTO updatePopularLocationDTO)
         {
             string query = "update PopularLocation Set PopularLocationCityName=@popularLocationCityName,PopularLocationImageURL=@popularLocationImageURL where PopularLocationID=@popularLocationID";
             var parameters = new DynamicParameters();

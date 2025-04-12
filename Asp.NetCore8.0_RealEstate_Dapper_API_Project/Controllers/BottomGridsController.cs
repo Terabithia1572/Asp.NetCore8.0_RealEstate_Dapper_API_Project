@@ -18,7 +18,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Controllers
         [HttpGet]
         public async Task<IActionResult> BottomGridList()
         {
-            var values = await _bottomGridRepository.GetAllBottomGridAsync();
+            var values = await _bottomGridRepository.GetAllBottomGrid();
             return Ok(values);
         }
         [HttpPost]

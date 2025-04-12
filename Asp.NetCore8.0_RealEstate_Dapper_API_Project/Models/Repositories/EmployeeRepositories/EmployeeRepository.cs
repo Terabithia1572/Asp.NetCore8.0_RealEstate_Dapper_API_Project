@@ -14,7 +14,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Empl
             _context = context;
         }
 
-        public async void CreateEmployee(CreateEmployeeDTO createEmployeeDTO)
+        public async Task CreateEmployee(CreateEmployeeDTO createEmployeeDTO)
         {
             //Bu kod, bir kategoriyi veritabanına eklemek için kullanılan bir metodu tanımlar. Metodun amacı, verilen kategoriyi veritabanına kaydetmektir. Aşağıda kodun detaylı açıklaması bulunmaktadır:
             {
@@ -34,7 +34,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Empl
             }
         }
 
-        public async void DeleteEmployee(int id)
+        public async Task DeleteEmployee(int id)
         {
             string query = "delete from Employee where EmployeeID=@employeeID";
             var parameters = new DynamicParameters();
@@ -46,7 +46,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Empl
             }
         }
 
-        public async Task<List<ResultEmployeeDTO>> GetAllEmployeeAsync()
+        public async Task<List<ResultEmployeeDTO>> GetAllEmployee()
         {
             string query = "select * from Employee";
             using (var connection = _context.CreateConnection())
@@ -68,7 +68,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.Empl
             }
         }
 
-        public async void UpdateEmployee(UpdateEmployeeDTO updateEmployeeDTO)
+        public async Task UpdateEmployee(UpdateEmployeeDTO updateEmployeeDTO)
         {
             string query = "update Employee Set EmployeeName=@employeeName,EmployeeTitle=@employeeTitle,EmployeeMail=@employeeMail,EmployeePhoneNumber=@employeePhoneNumber,EmployeeImageURL=@employeeImageURL,EmployeeStatus=@employeeStatus where EmployeeID=@employeeID";
             var parameters = new DynamicParameters();

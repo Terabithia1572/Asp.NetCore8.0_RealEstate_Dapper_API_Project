@@ -16,7 +16,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.WhoW
             _context = context;
         }
 
-        public async void CreateWhoWeAreDetail(CreateWhoWeAreDetailDTO createWhoWeAreDetailDTO)
+        public async Task CreateWhoWeAreDetail(CreateWhoWeAreDetailDTO createWhoWeAreDetailDTO)
         {
             string query = "insert into WhoWeAreDetail (Title,Subtitle,Description1,Description2) values (@title,@subtitle,@description1,@description2)";
             var parameters = new DynamicParameters();
@@ -30,7 +30,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.WhoW
             }
         }
 
-        public async void DeleteWhoWeAreDetail(int id)
+        public async Task DeleteWhoWeAreDetail(int id)
         {
             string query = "delete from WhoWeAreDetail where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();
@@ -42,7 +42,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.WhoW
             }
         }
 
-        public async Task<List<ResultWhoWeAreDetailDTO>> GetAllWhoWeAreDetailAsync()
+        public async Task<List<ResultWhoWeAreDetailDTO>> GetAllWhoWeAreDetail()
         {
 
             string query = "select * from WhoWeAreDetail";
@@ -65,7 +65,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_API_Project.Models.Repositories.WhoW
             }
         }
 
-        public async void UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDTO updateWhoWeAreDetailDTO)
+        public async Task UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDTO updateWhoWeAreDetailDTO)
         {
             string query = "update WhoWeAreDetail Set Title=@title,Subtitle=@subTitle,Description1=@description1,Description2=@description2 where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();
