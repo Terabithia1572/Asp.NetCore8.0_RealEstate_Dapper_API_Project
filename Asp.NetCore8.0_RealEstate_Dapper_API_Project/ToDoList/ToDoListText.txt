@@ -1,2 +1,3 @@
 ﻿Contact Sınıfı
 Product to Property
+Slug Url
