@@ -30,7 +30,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
         [HttpGet]
         public async Task<IActionResult> ProperySingle(int id)
         {
-            id = 1;
+            ViewBag.i = id;
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44309/api/Products/GetProductByProductID?id=" + id);
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -40,7 +40,7 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             var responseMessage2 = await client2.GetAsync("https://localhost:44309/api/ProductDetails/GetProductDetailByProductID?id=" + id);
             var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
             var values2 = JsonConvert.DeserializeObject<GetProductDetailByIDDTO>(jsonData2);
-
+            
             ViewBag.title1 = values.ProductTitle.ToString();
             ViewBag.price = values.ProductPrice;
             ViewBag.city = values.ProductCity;
