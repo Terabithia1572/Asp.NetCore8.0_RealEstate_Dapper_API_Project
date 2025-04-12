@@ -27,8 +27,8 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> ProperySingle(int id)
+        [HttpGet("property/{slug}/{id}")]
+        public async Task<IActionResult> ProperySingle(string slug,int id)
         {
             ViewBag.i = id;
             var client = _httpClientFactory.CreateClient();
@@ -59,6 +59,9 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
             ViewBag.date=values.ProductAdvertisementDate.ToString("dd/MM/yyyy");
             ViewBag.location = values2.ProductLocation;
             ViewBag.videoURL = values2.ProductVideoURL;
+
+            string slugFromTitle=CreateSlug(values.ProductTitle);
+            ViewBag.slugURL = slugFromTitle;
 
             return View();
         }
@@ -95,6 +98,17 @@ namespace Asp.NetCore8._0_RealEstate_Dapper_UI_Project.Controllers
                 return $"{(int)(timeSpan.TotalDays / 30)} ay önce eklendi";
             else
                 return $"{(int)(timeSpan.TotalDays / 365)} yıl önce eklendi";
+        }
+        private string CreateSlug(string title)
+        {
+            title = title.ToLowerInvariant(); // Küçük harfe çevir
+            title = title.Replace(" ", "-"); // Boşlukları tire ile değiştir
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"[^a-z0-9\s-]", ""); // Geçersiz karakterleri kaldır
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"\s+", " ").Trim(); // Birden fazla boşluğu tek boşluğa indir ve kenar boşluklarını kaldır
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"\s", "-"); // Boşlukları tire ile değiştir
+
+            return title;
+
         }
 
     }

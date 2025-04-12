@@ -9,6 +9,7 @@
         public string ProductCity { get; set; }
         public string ProductDistrict { get; set; }
         public string ProductAddress { get; set; }
+        public string SlugUrl { get; set; }
         public string ProductDescription { get; set; }
         public string ProductType { get; set; }
         public string CategoryName { get; set; }

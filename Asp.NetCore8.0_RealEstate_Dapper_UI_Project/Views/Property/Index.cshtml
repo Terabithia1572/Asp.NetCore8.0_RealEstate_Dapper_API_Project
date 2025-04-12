@@ -15,7 +15,7 @@
                 @foreach (var item in Model)
                 {
                     <div class="col-lg-4 col-md-6 mb-3">
-                        <a href="/Property/ProperySingle/@item.ProductID">
+                        <a href="@Url.Action("ProperySingle","Property",new {slug=item.SlugUrl,id=item.ProductID})">
                             <div class="box16">
                                 <div class="rentext-listing-category">
                                     <span>@item.ProductType</span><span>Rent</span>
